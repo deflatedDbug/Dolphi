@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Search() {
   const searchRef = useRef(null);
@@ -39,13 +40,13 @@ export default function Search() {
     <div
       className="search"
       ref={searchRef}
-      style={{ width: "4rem", height: "1rem" }}
+      style={{ width: "1rem", height: "1rem" }}
     >
       <input
         className="searchInput"
         onChange={onChange}
         onFocus={onFocus}
-        placeholder="Search posts"
+        placeholder="Search here"
         type="text"
         value={query}
       />
