@@ -1,24 +1,21 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
+import { Disclosure } from "@headlessui/react";
+import { GiHamburgerMenu } from "react-icons/gi";
+
 function NavBar() {
   return (
     <>
-      <Nav
-        className="col-md-12 d-none d-md-block bg-light sidebar"
-        activeKey="/home"
-        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
-      >
-        <div className="sidebar-sticky"></div>
-        <Nav.Item>
-          <Nav.Link href="/home">Active</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-1">Link</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-2">Link</Nav.Link>
-        </Nav.Item>
-      </Nav>
+      <div>
+        <Disclosure as="nav">
+          <Disclosure.Button className="absolute top-4 right-4 inline-flex items-center peer justify-center rounded-md p-2 text-gray-900 hover:text-white focus:out">
+            <GiHamburgerMenu
+              className="block md:hidden h-6 w-6"
+              aria-hidden="true"
+            />
+          </Disclosure.Button>
+        </Disclosure>
+      </div>
     </>
   );
 }
