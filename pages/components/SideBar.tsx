@@ -11,6 +11,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import SearchIcon from "@mui/icons-material/Search";
+import Search from "./Search";
 
 const drawerWidth = 240;
 
@@ -18,16 +20,6 @@ export default function ClippedDrawer() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      >
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Dolphi
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <Drawer
         variant="permanent"
         sx={{
@@ -39,10 +31,13 @@ export default function ClippedDrawer() {
           },
         }}
       >
-        <Toolbar />
+        <Toolbar>
+          <SearchIcon />
+          <Search />
+        </Toolbar>
         <Box sx={{ overflow: "auto" }}>
           <List>
-            {["Notes", "Tasks", "Discussion"].map((text, index) => (
+            {["Notes", "Tasks", "Discussions"].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon></ListItemIcon>
