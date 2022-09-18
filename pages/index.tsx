@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import SideBar from "./components/SideBar";
+import Main from "./components/Main";
 import { useState } from "react";
 import LoginPage from "./components/Login";
 
@@ -14,8 +14,7 @@ const Home: NextPage = () => {
           <Head>
             <title>Dolphi</title>
           </Head>
-          <SideBar />
-          <h1>SHOWER</h1>
+          <Main />
         </>
       )}
     </>
