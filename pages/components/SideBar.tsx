@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
-import Input from "@mui/material/Input"
-import Button from "@mui/material/Button"
+import Input from "@mui/material/Input";
+import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
@@ -14,13 +14,13 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import SearchIcon from "@mui/icons-material/Search";
 import Search from "./Search";
-import { MDBTextArea } from 'mdb-react-ui-kit';
+import { MDBTextArea } from "mdb-react-ui-kit";
 import { NoEncryption } from "@mui/icons-material";
 import NoteGraphic from "./NoteGraphic";
 import TaskGraphic from "./TaskGraphic";
 import DiscussionGraphic from "./DiscussionGraphic";
 import { useEffect, useState } from "react";
-import { updateDoc } from "../api/setDoc" ; 
+import { updateDoc } from "../api/setDoc";
 
 import Image from "next/image";
 
@@ -33,7 +33,6 @@ export default function ClippedDrawer() {
       .then((response) => response.json())
       .then((data) => setDoc(data.body));
   }, []);
-	
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -95,13 +94,28 @@ export default function ClippedDrawer() {
         </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Typography paragraph>{doc}</Typography>
-	  	<MDBTextArea label='Message' id='textAreaExample' rows={30}
-		defaultValue={doc}
-		onChange={(e)=>setDoc(e.target.value)}/>
-		<Button style={{width: "3rem", height: "5rem"}}onClick={() => {
-			updateDoc(doc).then((doc) => setDoc(doc));
-		}}/>
+        <Typography paragraph>{doc}</Typography>{" "}
+        <MDBTextArea
+          label="Message"
+          id="textAreaExample"
+          rows={30}
+          defaultValue={doc}
+          onChange={(e) => setDoc(e.target.value)}
+        />
+        <Button
+          style={{
+            width: "1rem",
+            height: "2rem",
+            backgroundColor: "#77BDDF",
+            color: "white",
+          }}
+          onClick={() => {
+            updateDoc(doc).then((doc) => setDoc(doc));
+          }}
+        >
+          {" "}
+          Submit
+        </Button>
       </Box>
     </Box>
   );
