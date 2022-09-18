@@ -17,11 +17,20 @@ import { NoEncryption } from "@mui/icons-material";
 import NoteGraphic from "./NoteGraphic";
 import TaskGraphic from "./TaskGraphic";
 import DiscussionGraphic from "./DiscussionGraphic";
+import { useEffect, useState } from "react";
+
 import Image from "next/image";
 
 const drawerWidth = 240;
 
 export default function ClippedDrawer() {
+  const [doc, setDoc] = useState(null);
+  useEffect(() => {
+    fetch("http://35.232.11.213:8000/api/v1/UMD/MATH/140/fall2022/1")
+      .then((response) => response.json())
+      .then((data) => setDoc(data.body));
+  }, []);
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -39,7 +48,9 @@ export default function ClippedDrawer() {
         <Toolbar>
           <SearchIcon
             style={{
-              display: "inline-flex",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
               width: "1.5rem",
               height: "inline",
               color: "#3F7396",
@@ -67,7 +78,11 @@ export default function ClippedDrawer() {
             {["Course Info", "Course Review", "Trash"].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
-                  <ListItemIcon></ListItemIcon>
+                  <ListItemIcon>
+                    <div>{text === "Course Info" && <NoteGraphic />}</div>
+                    <div> {text === "Course Review" && <TaskGraphic />}</div>
+                    <div>{text === "Trash" && <DiscussionGraphic />}</div>
+                  </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
@@ -76,9 +91,7 @@ export default function ClippedDrawer() {
         </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar />
-        <Typography paragraph>Sample paragraph</Typography>
-        <Typography paragraph>Sample paragraph</Typography>
+        <Typography paragraph>{doc}</Typography>
       </Box>
     </Box>
   );

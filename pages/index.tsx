@@ -15,6 +15,7 @@ const Home: NextPage = () => {
             <title>Dolphi</title>
           </Head>
           <SideBar />
+          <h1>SHOWER</h1>
         </>
       )}
     </>
