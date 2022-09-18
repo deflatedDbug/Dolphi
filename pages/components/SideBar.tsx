@@ -28,10 +28,15 @@ const drawerWidth = 240;
 
 export default function ClippedDrawer() {
   const [doc, setDoc] = useState("");
+  const [comp, setComp] = useState("");
+
   useEffect(() => {
     fetch("http://35.232.11.213:8000/api/v1/UMD/MATH/140/fall2022/1")
       .then((response) => response.json())
-      .then((data) => setDoc(data.body));
+      .then((data) => {
+	  	setDoc(data.body);
+		setComp(data.body);
+	  });
   }, []);
 
   return (
@@ -94,7 +99,7 @@ export default function ClippedDrawer() {
         </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Typography paragraph>{doc}</Typography>{" "}
+        <Typography paragraph>{comp}</Typography>{" "}
         <MDBTextArea
           label="Message"
           id="textAreaExample"
