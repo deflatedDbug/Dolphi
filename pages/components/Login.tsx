@@ -4,8 +4,8 @@ import Form from "react-bootstrap/Form";
 import Image from "next/image";
 import { Button } from "react-bootstrap";
 import { Dispatch, SetStateAction } from "react";
-import authenticateEmail from "./api/auth";
-import logo from "../content/dolphi_logo.png";
+import authenticateEmail from "../api/auth";
+import logo from "../../content/dolphi_logo.png";
 import { color } from "@mui/system";
 
 // hexes: #142029, #3F7396, #4F8EB5, #77BDDF, #A4E2F9
